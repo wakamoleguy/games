@@ -7,32 +7,34 @@
 function List(items) {
     const array = cloneValidListArray(items);
 
-    this.length = () => {
-        return array.length;
-    };
+    this.array = () => array.concat([]);
+    this.length = () => array.length;
+}
 
-    this.peek = (n) => {
+List.prototype = {
+    peek: function (n) {
         const index = n === undefined ? 0 : n;
         const length = this.length();
         
         if (0 <= index && index < length) {
-            return array[index];
+            return this.array()[index];
         } else {
             throw new Error(`List peek out of bounds: ${index}/${length}`);
         }
-    };
+    },
 
-    this.push = (item) => {
-        return new List(array.concat([item]));
-    };
+    push: function (item) {
+        return new List(this.array().concat([item]));
+    },
 
-    this.pop = () => {
+    pop: function () {
         return this.take(0);
-    };
+    },
 
-    this.take = (n) => {
+    take: function (n) {
         const index = n === undefined ? 0 : n;
         const length = this.length();
+        const array = this.array();
 
         if (0 <= index && index < length) {
             return {
@@ -42,18 +44,20 @@ function List(items) {
         } else {
             throw new Error(`List take out of bounds: ${index}/${length}`);
         }
-    };
+    },
 
-    this.map = (folder) => {
-        return new List(array.map(folder));
-    };
+    map: function (folder) {
+        return new List(this.array().map(folder));
+    },
+    
+    forEach: function (folder) {
+        this.array().forEach(folder);
+    },
 
-    this.forEach = (folder) => {
-        array.forEach(folder);
-    };
-
-    this.toString = () => array.toString();
-}
+    toString: function () {
+        return array.toString();
+    }
+};
 
 module.exports = {
     create: function (items) {
