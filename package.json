@@ -1,0 +1,14 @@
+{
+  "name": "games",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "Will Mitchell <wakamoleguy@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.5.2"
+  }
+}
