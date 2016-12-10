@@ -8,13 +8,12 @@ function List(items) {
     const array = cloneValidListArray(items);
 
     this.array = () => array.concat([]);
-    this.length = () => array.length;
+    this.size = () => array.length;
 }
 
 List.prototype = {
-    peek: function (n) {
-        const index = n === undefined ? 0 : n;
-        const length = this.length();
+    get: function (index) {
+        const length = this.size();
         
         if (0 <= index && index < length) {
             return this.array()[index];
@@ -28,21 +27,22 @@ List.prototype = {
     },
 
     pop: function () {
-        return this.take(0);
+        if (this.size() > 0) {
+            return new List(this.array().slice(0, -1));
+        } else {
+            throw new Error('Cannot pop empty List');
+        }
     },
 
-    take: function (n) {
-        const index = n === undefined ? 0 : n;
-        const length = this.length();
-        const array = this.array();
+    unshift: function (item) {
+        return new List([item].concat(this.array()));
+    },
 
-        if (0 <= index && index < length) {
-            return {
-                head: array[index],
-                tail: new List(array.slice(0, index).concat(array.slice(index+1)))
-            };
+    shift: function () {
+        if (this.size() > 0) {
+            return new List(this.array().slice(1));
         } else {
-            throw new Error(`List take out of bounds: ${index}/${length}`);
+            throw new Error('Cannot shift empty List');
         }
     },
 
@@ -55,13 +55,13 @@ List.prototype = {
     },
 
     toString: function () {
-        return array.toString();
+        return this.array().toString();
     }
 };
 
 module.exports = {
     create: function (items) {
-        return new List(items);
+        return new List(items === undefined ? [] : items);
     }
 };
 
@@ -74,7 +74,11 @@ function cloneValidListArray(raw) {
     const array = new Array(raw.length);
 
     for (let i = 0; i < raw.length; i++) {
-        array[i] = raw[i] === undefined ? null : raw[i];
+        if (raw[i] === undefined) {
+            throw new Error(`Cannot clone array with undefined value (${i})`);
+        } else {
+            array[i] = raw[i];
+        }
     }
 
     return array;
