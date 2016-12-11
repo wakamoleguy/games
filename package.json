@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "author": "Will Mitchell <wakamoleguy@gmail.com>",
   "license": "ISC",

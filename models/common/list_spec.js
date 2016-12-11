@@ -31,7 +31,7 @@ describe('List', () => {
 
     describe('push', () => {
         let list;
-        
+
         beforeEach(() => {
             list = List.create([A, B, C]);
         });
@@ -94,7 +94,7 @@ describe('List', () => {
 
     describe('unshift', () => {
         let list;
-        
+
         beforeEach(() => {
             list = List.create([A, B, C]);
         });
@@ -192,4 +192,7 @@ describe('List', () => {
             }).toThrow();
         });
     });
+
+    xdescribe('map', () => {});
+    xdescribe('sort', () => {});
 });

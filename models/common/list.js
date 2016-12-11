@@ -14,7 +14,7 @@ function List(items) {
 List.prototype = {
     get: function (index) {
         const length = this.size();
-        
+
         if (0 <= index && index < length) {
             return this.array()[index];
         } else {
@@ -49,7 +49,11 @@ List.prototype = {
     map: function (folder) {
         return new List(this.array().map(folder));
     },
-    
+
+    sort: function (compareFunction) {
+        return new List(this.array().sort(compareFunction));
+    },
+
     forEach: function (folder) {
         this.array().forEach(folder);
     },

@@ -1,4 +1,4 @@
-const List = require('../data_structures/list');
+const List = require('../models/common/list');
 
 function Player(hand) {
     this.hand = () => hand;

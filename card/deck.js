@@ -2,7 +2,7 @@
 /*
  * Deck Model
  */
-const List = require('../data_structures/list');
+const List = require('../models/common/list');
 
 /*
  * Deck Mutations
@@ -14,18 +14,14 @@ function create(n) {
 }
 
 function shuffle(deck) {
-    let remaining = deck;
-    let shuffled = create(0);
-    while (remaining.length()) {
-        const i = Math.floor(Math.random() * remaining.length());
-        const { head, tail } = remaining.take(i);
-        shuffled = shuffled.push(head);
-        remaining = tail;
-    }
-
-    return shuffled;
-}
-
+    return deck.
+        map((card) => ({
+            card,
+            sort: Math.random()
+        })).
+        sort((a, b) => (b.sort - a.sort)).
+        map((compoundCard) => compoundCard.card);
+};
 module.exports = {
     create,
     shuffle
