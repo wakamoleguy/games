@@ -7,7 +7,6 @@
     "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "author": "Will Mitchell <wakamoleguy@gmail.com>",
-  "license": "ISC",
   "devDependencies": {
     "jasmine": "^2.5.2"
   }
