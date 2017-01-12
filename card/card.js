@@ -3,7 +3,7 @@ const SUIT = {
     1: 'DIAMONDS',
     2: 'HEARTS',
     3: 'SPADES',
-    
+
     CLUBS: 0,
     DIAMONDS: 1,
     HEARTS: 2,
@@ -24,7 +24,7 @@ const RANK = {
     10: 'JACK',
     11: 'QUEEN',
     12: 'KING',
-    
+
     ACE: 0,
     TWO: 1,
     THREE: 2,
@@ -147,6 +147,10 @@ function create(rank, suit) {
     return new Card(rank, suit);
 }
 
+function equals(a, b) {
+    return a.suit() === b.suit() && a.rank() === b.rank();
+}
+
 function ace() { return new Card(RANK.ACE, 0); }
 function two() { return new Card(RANK.TWO, 0); }
 function three() { return new Card(RANK.THREE, 0); }
@@ -171,6 +175,7 @@ module.exports = {
     SUIT,
     from,
     create,
+    equals,
 
     ace,
     two,

@@ -10,7 +10,7 @@ const List = require('../models/common/list');
 function create(n) {
     const length = n === undefined ? 52 : n;
 
-    return List.create(identityArray(length));
+    return identityArray(length);
 }
 
 function shuffle(deck) {
