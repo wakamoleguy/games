@@ -28,14 +28,14 @@ describe('FSM', () => {
                     { card: 2, player: initialPlayers[3] }
                 ],
                 leader: initialPlayers[0]
-            }
+            };
 
             initialState = {
                 players: initialPlayers,
                 tricks: [initialCurrentTrick],
                 currentTrick: initialCurrentTrick,
                 round: 3
-            }
+            };
 
             afterState = FSM.deal(initialState);
         });

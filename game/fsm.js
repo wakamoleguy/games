@@ -3,7 +3,7 @@ const Card = require('../card/card');
 
 exports.handle = function handle(event, state) {
     if (event === 'deal') {
-        return
+        return;
     }
 }
 
